@@ -1,0 +1,15 @@
+import telebot
+
+bot = telebot.TeleBot("8448894550:AAHTUTm2XaC7Q-zngH_A4iOckZIiR_G5oZI")
+
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.reply_to(message, "مرحبا! أنا سمسميي، جاهز للروليت!")
+
+@bot.message_handler(commands=['roll'])
+def roll_dice(message):
+    import random
+    result = random.randint(1, 6)
+    bot.reply_to(message, f"لقد رميت النرد: {result}")
+
+bot.polling()
